@@ -23,16 +23,22 @@
 class SIMUL_QT_WIDGETS_EXPORT QSliderEdit : public QWidget
 {
 	Q_OBJECT
+	Q_PROPERTY(QString title READ title WRITE setTitle DESIGNABLE true)
+	Q_PROPERTY(int labelWidth READ labelWidth WRITE setLabelWidth DESIGNABLE true)
 	Q_PROPERTY(double minimum READ minimum WRITE setMinimum DESIGNABLE true)
 	Q_PROPERTY(double maximum READ maximum WRITE setMaximum DESIGNABLE true)
 	Q_PROPERTY(double step READ step WRITE setStep DESIGNABLE true)
 	Q_PROPERTY(QVariant value READ value WRITE setValue DESIGNABLE true)
-	Q_PROPERTY(QString title READ title WRITE setTitle DESIGNABLE true)
 	Q_PROPERTY(bool logarithmic READ logarithmic WRITE setLogarithmic DESIGNABLE true)
 	Q_PROPERTY(Qt::Orientation orientation READ orientation WRITE setOrientation DESIGNABLE true)
 public:
 	QSliderEdit(QWidget *parent = 0);
 	~QSliderEdit();
+	int labelWidth() const
+	{
+		return labelWidth_;
+	}
+	void setLabelWidth(int w);
 	Qt::Orientation	orientation() const;
 	void setOrientation(Qt::Orientation);
 	void setMinimum(double f)
@@ -72,6 +78,7 @@ public slots:
 private:
 	void updateSlider();
 	Ui::QSliderEdit ui;
+	int labelWidth_;
 	double minimum_;
 	double maximum_;
 	double value_;
