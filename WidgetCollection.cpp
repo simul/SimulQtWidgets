@@ -10,9 +10,17 @@
 #pragma comment(lib,"Qt5Gui")
 #pragma comment(lib,"Qt5Widgets")
 #else
-#pragma comment(lib,"QtDesigner4")
-#pragma comment(lib,"QtCore4")
-#pragma comment(lib,"QtGui4")
+
+#ifdef _DEBUG
+	#pragma comment(lib,"QtDesignerd4")
+	#pragma comment(lib,"QtCored4")
+	#pragma comment(lib,"QtGuid4")
+#else
+	#pragma comment(lib,"QtDesigner4")
+	#pragma comment(lib,"QtCore4")
+	#pragma comment(lib,"QtGui4")
+#endif
+
 #endif
 
  WidgetCollection::WidgetCollection(QObject *parent)
