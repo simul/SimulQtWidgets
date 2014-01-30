@@ -5,10 +5,17 @@
 #include "QIntSliderEditInterface.h"
 
 #ifdef QT5
-#pragma comment(lib,"Qt5Designer")
-#pragma comment(lib,"Qt5Core")
-#pragma comment(lib,"Qt5Gui")
-#pragma comment(lib,"Qt5Widgets")
+	#ifdef _DEBUG
+		#pragma comment(lib,"Qt5Designerd")
+		#pragma comment(lib,"Qt5Cored")
+		#pragma comment(lib,"Qt5Guid")
+		#pragma comment(lib,"Qt5Widgetsd")
+	#else
+		#pragma comment(lib,"Qt5Designer")
+		#pragma comment(lib,"Qt5Core")
+		#pragma comment(lib,"Qt5Gui")
+		#pragma comment(lib,"Qt5Widgets")
+	#endif
 #else
 
 #ifdef _DEBUG
