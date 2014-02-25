@@ -3,6 +3,7 @@
 
 QSliderEdit::QSliderEdit(QWidget *parent)
 	: QWidget(parent)
+	,labelWidth_(80)
 	,minimum_(0.0)
 	,maximum_(1.0)
 	,value_(0.0)
@@ -18,6 +19,18 @@ QSliderEdit::QSliderEdit(QWidget *parent)
 QSliderEdit::~QSliderEdit()
 {
 
+}
+
+void QSliderEdit::setLabelWidth(int w)
+{
+	labelWidth_=w;
+	QSize s=ui.label->minimumSize();
+	s.setWidth(w);
+	ui.label->setMinimumSize(s);
+	s=ui.label->maximumSize();
+	s.setWidth(w);
+	ui.label->setMaximumSize(s);
+	update();
 }
 
 Qt::Orientation	QSliderEdit::orientation() const
@@ -188,6 +201,6 @@ void QSliderEdit::updateSlider()
 	double pos=ui.slider->minimum()+(double)(ui.slider->maximum()-ui.slider->minimum())*val;
 	ui.slider->blockSignals(true);
 	ui.slider->setValue((int)pos);
-	ui.lineEdit->blockSignals(false);
+	ui.slider->blockSignals(false);
 	emit valueChanged();
 }

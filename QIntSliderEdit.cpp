@@ -9,6 +9,7 @@ static int log2(int val)
 
 QIntSliderEdit::QIntSliderEdit(QWidget *parent)
 	: QWidget(parent)
+	,labelWidth_(80)
 	,minimum_(0)
 	,maximum_(100)
 	,value_(0)
@@ -177,6 +178,6 @@ void QIntSliderEdit::updateSlider()
 	int pos=ui.slider->minimum()+val;
 	ui.slider->blockSignals(true);
 	ui.slider->setValue((int)pos);
-	ui.lineEdit->blockSignals(false);
+	ui.slider->blockSignals(false);
 	emit valueChanged();
 }

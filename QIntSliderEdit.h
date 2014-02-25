@@ -23,14 +23,21 @@
 class SIMUL_QT_WIDGETS_EXPORT QIntSliderEdit : public QWidget
 {
 	Q_OBJECT
+	Q_PROPERTY(QString title READ title WRITE setTitle DESIGNABLE true)
+	Q_PROPERTY(int labelWidth READ labelWidth WRITE setLabelWidth DESIGNABLE true)
 	Q_PROPERTY(int minimum READ minimum WRITE setMinimum DESIGNABLE true)
 	Q_PROPERTY(int maximum READ maximum WRITE setMaximum DESIGNABLE true)
 	Q_PROPERTY(QVariant value READ value WRITE setValue DESIGNABLE true)
-	Q_PROPERTY(QString title READ title WRITE setTitle DESIGNABLE true)
 	Q_PROPERTY(bool powerOfTwo READ powerOfTwo WRITE setPowerOfTwo DESIGNABLE true)
 public:
 	QIntSliderEdit(QWidget *parent = 0);
 	~QIntSliderEdit();
+	int labelWidth() const
+	{
+		return labelWidth_;
+	}
+	void setLabelWidth(int w);
+	void setMinimum(int f);
 	int minimum() const
 	{
 		return minimum_;
@@ -39,7 +46,6 @@ public:
 	{
 		return maximum_;
 	}
-	void setMinimum(int f);
 	void setMaximum(int f);
 	void setPowerOfTwo(bool l);
 	bool powerOfTwo() const;
@@ -60,6 +66,7 @@ public slots:
 private:
 	void updateSlider();
 	Ui::QIntSliderEdit ui;
+	int labelWidth_;
 	int minimum_;
 	int maximum_;
 	int value_;

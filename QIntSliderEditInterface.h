@@ -1,7 +1,7 @@
 #ifndef QSLIDEREDITINTERFACE_H
 #define QSLIDEREDITINTERFACE_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 #include <QDesignerCustomWidgetInterface>
 #ifndef _LIB
 	#if defined(SIMUL_QT_WIDGETS)

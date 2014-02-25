@@ -1,7 +1,7 @@
 #ifndef QSliderEditInterface_H
 #define QSliderEditInterface_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 #include <QDesignerCustomWidgetInterface>
 #if defined(SIMUL_QT_WIDGETS)
 #define SIMUL_QT_WIDGETS_EXPORT Q_DECL_EXPORT

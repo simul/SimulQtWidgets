@@ -18,6 +18,9 @@ class WidgetCollection: public QObject, public QDesignerCustomWidgetCollectionIn
 {
 	Q_OBJECT
 	Q_INTERFACES(QDesignerCustomWidgetCollectionInterface)
+#ifdef QT5
+	Q_PLUGIN_METADATA(IID "simul.WidgetCollection")
+#endif
 
 public:
 	WidgetCollection(QObject *parent = 0);
