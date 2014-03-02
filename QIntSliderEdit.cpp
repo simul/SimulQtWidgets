@@ -67,6 +67,13 @@ void QIntSliderEdit::setLabelWidth(int w)
 	ui.label->setMaximumSize(s);
 	update();
 }
+/*
+void QIntSliderEdit::setLabelWidth(int w)
+{
+	labelWidth_=f;
+	ui.label->setMinimumWidth(w);
+	ui.label->setMaximumWidth(w);
+}*/
 
 void QIntSliderEdit::setMinimum(int f)
 {

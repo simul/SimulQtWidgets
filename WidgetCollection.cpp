@@ -11,10 +11,10 @@
 		#pragma comment(lib,"Qt5Guid")
 		#pragma comment(lib,"Qt5Widgetsd")
 	#else
-		#pragma comment(lib,"Qt5Designer")
-		#pragma comment(lib,"Qt5Core")
-		#pragma comment(lib,"Qt5Gui")
-		#pragma comment(lib,"Qt5Widgets")
+#pragma comment(lib,"Qt5Designer")
+#pragma comment(lib,"Qt5Core")
+#pragma comment(lib,"Qt5Gui")
+#pragma comment(lib,"Qt5Widgets")
 	#endif
 #else
 
@@ -23,9 +23,9 @@
 	#pragma comment(lib,"QtCored4")
 	#pragma comment(lib,"QtGuid4")
 #else
-	#pragma comment(lib,"QtDesigner4")
-	#pragma comment(lib,"QtCore4")
-	#pragma comment(lib,"QtGui4")
+#pragma comment(lib,"QtDesigner4")
+#pragma comment(lib,"QtCore4")
+#pragma comment(lib,"QtGui4")
 #endif
 
 #endif
