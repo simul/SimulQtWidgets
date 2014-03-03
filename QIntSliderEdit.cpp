@@ -23,6 +23,21 @@ QIntSliderEdit::~QIntSliderEdit()
 
 }
 
+void QIntSliderEdit::setOrientation(Qt::Orientation o)
+{
+	ui.slider->setOrientation(o);
+	QBoxLayout *l=(QBoxLayout*)layout();
+	if(o==Qt::Horizontal)
+	{
+		l->setDirection(QBoxLayout::LeftToRight);
+	}
+	else
+	{
+		l->setDirection(QBoxLayout::TopToBottom);
+	}
+	update();
+}
+
 void QIntSliderEdit::setLabelWidth(int w)
 {
 	labelWidth_=w;
