@@ -19,11 +19,11 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v110_xp</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v110_xp</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Template|x64'">
     <PlatformToolset>v110</PlatformToolset>
@@ -64,11 +64,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <ImportLibrary>$(SIMUL)/lib/$(Platform)/VC11/$(Configuration)/$(TargetName).lib</ImportLibrary>
-      <ShowProgress>LinkVerboseLib</ShowProgress>
+      <ShowProgress>NotSet</ShowProgress>
     </Link>
     <PostBuildEvent>
-      <Command>echo "$(SIMUL)\exe\$(Platform)/VC11/$(Configuration)/$(TargetFileName)" "$(QTDIR)\plugins\designer"
-copy "$(SIMUL)\exe\$(Platform)\VC11\$(Configuration)\$(TargetFileName)" "$(QTDIR)\plugins\designer"
+      <Command>copy "$(SIMUL)\exe\$(Platform)\VC11\$(Configuration)\$(TargetFileName)" "$(QTDIR)\plugins\designer"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
