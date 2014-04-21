@@ -20,20 +20,36 @@ QIntSliderEdit::QIntSliderEdit(QWidget *parent)
 
 QIntSliderEdit::~QIntSliderEdit()
 {
+}
 
+Qt::Orientation QIntSliderEdit::orientation() const
+{
+	return ui.slider->orientation();
 }
 
 void QIntSliderEdit::setOrientation(Qt::Orientation o)
 {
 	ui.slider->setOrientation(o);
-	QBoxLayout *l=(QBoxLayout*)layout();
+	QBoxLayout *l=(QBoxLayout*)this->layout();
 	if(o==Qt::Horizontal)
 	{
 		l->setDirection(QBoxLayout::LeftToRight);
+		ui.lineEdit->setMinimumWidth(64);
+		ui.lineEdit->setMaximumWidth(64);
+		ui.slider->setMinimumWidth(32);
+		ui.slider->setMinimumHeight(8);
+		ui.label->setAlignment(Qt::AlignLeft);
+		ui.lineEdit->setAlignment(Qt::AlignLeft);
 	}
 	else
 	{
 		l->setDirection(QBoxLayout::TopToBottom);
+		ui.slider->setMinimumWidth(8);
+		ui.slider->setMinimumHeight(32);
+		ui.lineEdit->setMinimumWidth(labelWidth_);
+		ui.lineEdit->setMaximumWidth(labelWidth_);
+		ui.label->setAlignment(Qt::AlignHCenter);
+		ui.lineEdit->setAlignment(Qt::AlignHCenter);
 	}
 	update();
 }

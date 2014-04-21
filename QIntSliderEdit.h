@@ -29,15 +29,12 @@ class SIMUL_QT_WIDGETS_EXPORT QIntSliderEdit : public QWidget
 	Q_PROPERTY(int maximum READ maximum WRITE setMaximum DESIGNABLE true)
 	Q_PROPERTY(QVariant value READ value WRITE setValue DESIGNABLE true)
 	Q_PROPERTY(bool powerOfTwo READ powerOfTwo WRITE setPowerOfTwo DESIGNABLE true)
-    Q_PROPERTY(Qt::Orientation orientation READ orientation WRITE setOrientation)
+    Q_PROPERTY(Qt::Orientation orientation READ orientation WRITE setOrientation DESIGNABLE true)
 public:
 	QIntSliderEdit(QWidget *parent = 0);
 	~QIntSliderEdit();
-	Qt::Orientation orientation()
-	{
-		return ui.slider->orientation();
-	}
-	void setOrientation(Qt::Orientation o);
+
+    Qt::Orientation orientation() const;
 	int labelWidth() const
 	{
 		return labelWidth_;
@@ -66,6 +63,7 @@ public:
 signals:
 	void valueChanged();
 public slots:
+    void setOrientation(Qt::Orientation);
 	void on_slider_sliderMoved(int);
 	void on_slider_valueChanged(int);
 	void on_lineEdit_editingFinished();
