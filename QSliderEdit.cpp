@@ -13,6 +13,8 @@ QSliderEdit::QSliderEdit(QWidget *parent)
 	ui.setupUi(this);
 	ui.slider->setMinimum(0);
 	ui.slider->setMaximum(1000);
+	int h=this->height();
+	this->setMinimumHeight(h);
 	setValue(0.0);
 }
 

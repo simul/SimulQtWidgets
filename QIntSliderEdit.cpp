@@ -16,6 +16,8 @@ QIntSliderEdit::QIntSliderEdit(QWidget *parent)
 	,power_of_two_(false)
 {
 	ui.setupUi(this);
+	int h=this->height();
+	this->setMinimumHeight(h);
 }
 
 QIntSliderEdit::~QIntSliderEdit()
