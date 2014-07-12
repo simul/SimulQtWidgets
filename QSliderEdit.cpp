@@ -4,6 +4,7 @@
 QSliderEdit::QSliderEdit(QWidget *parent)
 	: QWidget(parent)
 	,labelWidth_(80)
+	,textWidth_(80)
 	,minimum_(0.0)
 	,maximum_(1.0)
 	,value_(0.0)
@@ -32,6 +33,18 @@ void QSliderEdit::setLabelWidth(int w)
 	s=ui.label->maximumSize();
 	s.setWidth(w);
 	ui.label->setMaximumSize(s);
+	update();
+}
+
+void QSliderEdit::setTextWidth(int w)
+{
+	textWidth_=w;
+	QSize s=ui.lineEdit->minimumSize();
+	s.setWidth(w);
+	ui.lineEdit->setMinimumSize(s);
+	s=ui.lineEdit->maximumSize();
+	s.setWidth(w);
+	ui.lineEdit->setMaximumSize(s);
 	update();
 }
 
@@ -126,7 +139,7 @@ void QSliderEdit::setValue(QVariant f,bool single_valued)
 	ui.slider->blockSignals(true);
 	updateSlider();
 	if(single_valued)
-		ui.lineEdit->setText(QString("%1").arg(value_,0,'g',-1,(QChar)' '));
+		ui.lineEdit->setText(valueToText(value_));
 	else
 		ui.lineEdit->setText("");
 	ui.slider->blockSignals(false);
@@ -154,8 +167,18 @@ void QSliderEdit::on_slider_sliderMoved(int pos)
 	else
 		val=(maximum_-minimum_)*val+minimum_;
 	ui.lineEdit->blockSignals(true);
-	ui.lineEdit->setText(QString("%1").arg(val,0,'g',-1,(QChar)' '));
+	ui.lineEdit->setText(valueToText(val));
 	ui.lineEdit->blockSignals(false);
+}
+
+QString QSliderEdit::valueToText(double value)
+{
+	return QString("%1").arg(value,0,'g',-1,(QChar)' ');
+}
+
+double QSliderEdit::textToValue(QString s)
+{
+	return s.toDouble();
 }
 
 void QSliderEdit::on_slider_valueChanged(int pos)
@@ -174,7 +197,7 @@ void QSliderEdit::on_slider_valueChanged(int pos)
 		val=maximum_;
 	value_=val;
 	ui.lineEdit->blockSignals(true);
-	ui.lineEdit->setText(QString("%1").arg(value_,0,'g',-1,(QChar)' '));
+	ui.lineEdit->setText(valueToText(value_));
 	ui.lineEdit->blockSignals(false);
 	emit valueChanged();
 }
@@ -182,7 +205,7 @@ void QSliderEdit::on_slider_valueChanged(int pos)
 void QSliderEdit::on_lineEdit_editingFinished()
 {
 	bool ok=false;
-	value_=ui.lineEdit->text().toDouble(&ok);
+	value_=textToValue(ui.lineEdit->text());
 	if(!ok)
 		return;
 	ui.slider->blockSignals(true);

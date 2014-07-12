@@ -10,6 +10,7 @@ static int log2(int val)
 QIntSliderEdit::QIntSliderEdit(QWidget *parent)
 	: QWidget(parent)
 	,labelWidth_(80)
+	,textWidth_(80)
 	,minimum_(0)
 	,maximum_(100)
 	,value_(0)
@@ -69,13 +70,19 @@ void QIntSliderEdit::setLabelWidth(int w)
 	ui.label->setMaximumSize(s);
 	update();
 }
-/*
-void QIntSliderEdit::setLabelWidth(int w)
+
+void QIntSliderEdit::setTextWidth(int w)
 {
-	labelWidth_=f;
-	ui.label->setMinimumWidth(w);
-	ui.label->setMaximumWidth(w);
-}*/
+	textWidth_=w;
+	QSize s=ui.lineEdit->minimumSize();
+	s.setWidth(w);
+	ui.lineEdit->setMinimumSize(s);
+	s=ui.lineEdit->maximumSize();
+	s.setWidth(w);
+	ui.lineEdit->setMaximumSize(s);
+	update();
+}
+
 
 void QIntSliderEdit::setMinimum(int f)
 {
