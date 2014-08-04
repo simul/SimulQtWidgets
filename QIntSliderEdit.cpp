@@ -15,6 +15,7 @@ QIntSliderEdit::QIntSliderEdit(QWidget *parent)
 	,maximum_(100)
 	,value_(0)
 	,power_of_two_(false)
+	,readonly_text(false)
 {
 	ui.setupUi(this);
 	int h=this->height();
@@ -121,6 +122,18 @@ void QIntSliderEdit::setPowerOfTwo(bool l)
 bool QIntSliderEdit::powerOfTwo() const
 {
 	return power_of_two_;
+}
+
+
+void QIntSliderEdit::setReadOnlyText(bool l)
+{
+	readonly_text=l;
+	ui.lineEdit->setReadOnly(readonly_text);
+}
+
+bool QIntSliderEdit::readOnlyText() const
+{
+	return readonly_text;
 }
 
 void QIntSliderEdit::setValue(QVariant f)

@@ -31,6 +31,7 @@ class SIMUL_QT_WIDGETS_EXPORT QIntSliderEdit : public QWidget
 	Q_PROPERTY(QVariant value READ value WRITE setValue DESIGNABLE true)
 	Q_PROPERTY(bool powerOfTwo READ powerOfTwo WRITE setPowerOfTwo DESIGNABLE true)
     Q_PROPERTY(Qt::Orientation orientation READ orientation WRITE setOrientation DESIGNABLE true)
+	Q_PROPERTY(bool readOnlyText READ readOnlyText WRITE setReadOnlyText DESIGNABLE true)
 public:
 	QIntSliderEdit(QWidget *parent = 0);
 	~QIntSliderEdit();
@@ -58,6 +59,8 @@ public:
 	void setMaximum(int f);
 	void setPowerOfTwo(bool l);
 	bool powerOfTwo() const;
+	void setReadOnlyText(bool l);
+	bool readOnlyText() const;
 	void setValue(QVariant f);
 	void setValue(QVariant f,bool single_valued);
 	QVariant value() const
@@ -82,6 +85,7 @@ private:
 	int maximum_;
 	int value_;
 	bool power_of_two_;
+	bool readonly_text;
 };
 
 #endif // QINTSLIDEREDIT_H
