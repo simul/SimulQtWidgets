@@ -76,7 +76,7 @@ public:
 	void setTitle(QString f);
 	QString title() const;
 	virtual QString valueToText(double value);
-	virtual double textToValue(QString s);
+	virtual double textToValue(QString s,bool *ok);
 signals:
 	void valueChanged();
 public slots:
