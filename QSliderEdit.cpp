@@ -176,9 +176,9 @@ QString QSliderEdit::valueToText(double value)
 	return QString("%1").arg(value,0,'g',-1,(QChar)' ');
 }
 
-double QSliderEdit::textToValue(QString s)
+double QSliderEdit::textToValue(QString s,bool *ok)
 {
-	return s.toDouble();
+	return s.toDouble(ok);
 }
 
 void QSliderEdit::on_slider_valueChanged(int pos)
@@ -205,7 +205,7 @@ void QSliderEdit::on_slider_valueChanged(int pos)
 void QSliderEdit::on_lineEdit_editingFinished()
 {
 	bool ok=false;
-	value_=textToValue(ui.lineEdit->text());
+	value_=textToValue(ui.lineEdit->text(),&ok);
 	if(!ok)
 		return;
 	ui.slider->blockSignals(true);
