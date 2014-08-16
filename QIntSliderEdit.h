@@ -32,6 +32,7 @@ class SIMUL_QT_WIDGETS_EXPORT QIntSliderEdit : public QWidget
 	Q_PROPERTY(bool powerOfTwo READ powerOfTwo WRITE setPowerOfTwo DESIGNABLE true)
     Q_PROPERTY(Qt::Orientation orientation READ orientation WRITE setOrientation DESIGNABLE true)
 	Q_PROPERTY(bool readOnlyText READ readOnlyText WRITE setReadOnlyText DESIGNABLE true)
+	Q_PROPERTY(QStringList enums READ enums WRITE setEnums DESIGNABLE true)
 public:
 	QIntSliderEdit(QWidget *parent = 0);
 	~QIntSliderEdit();
@@ -59,6 +60,8 @@ public:
 	void setMaximum(int f);
 	void setPowerOfTwo(bool l);
 	bool powerOfTwo() const;
+	void setEnums(QStringList e);
+	QStringList enums() const;
 	void setReadOnlyText(bool l);
 	bool readOnlyText() const;
 	void setValue(QVariant f);
@@ -69,6 +72,8 @@ public:
 	}
 	void setTitle(QString f);
 	QString title() const;
+	virtual QString valueToText(int value);
+	virtual int textToValue(QString s);
 signals:
 	void valueChanged();
 public slots:
@@ -86,6 +91,7 @@ private:
 	int value_;
 	bool power_of_two_;
 	bool readonly_text;
+	QStringList enums_;
 };
 
 #endif // QINTSLIDEREDIT_H

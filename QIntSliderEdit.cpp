@@ -20,6 +20,7 @@ QIntSliderEdit::QIntSliderEdit(QWidget *parent)
 	ui.setupUi(this);
 	int h=this->height();
 	this->setMinimumHeight(h);
+	setValue(0);
 }
 
 QIntSliderEdit::~QIntSliderEdit()
@@ -136,6 +137,17 @@ bool QIntSliderEdit::readOnlyText() const
 	return readonly_text;
 }
 
+void QIntSliderEdit::setEnums(QStringList e)
+{
+	enums_=e;
+	setValue(value_);
+}
+
+QStringList QIntSliderEdit::enums() const
+{
+	return enums_;
+}
+
 void QIntSliderEdit::setValue(QVariant f)
 {
 	setValue(f,true);
@@ -155,7 +167,7 @@ void QIntSliderEdit::setValue(QVariant f,bool single_valued)
 	ui.slider->blockSignals(true);
 	updateSlider();
 	if(single_valued)
-		ui.lineEdit->setText(QString("%1").arg(value_));
+		ui.lineEdit->setText(valueToText(value_));
 	else
 		ui.lineEdit->setText("");
 	ui.slider->blockSignals(false);
@@ -172,6 +184,20 @@ QString QIntSliderEdit::title() const
 	return ui.label->text();
 }
 
+QString QIntSliderEdit::valueToText(int value)
+{
+	if(enums_.size()&&value>=0&&value<enums_.size())
+	{
+		return enums_[value];
+	}
+	return QString("%1").arg(value);
+}
+
+int QIntSliderEdit::textToValue(QString s)
+{
+	bool ok=false;
+	return s.toInt(&ok);
+}
 
 void QIntSliderEdit::on_slider_sliderMoved(int pos)
 {
@@ -183,7 +209,7 @@ void QIntSliderEdit::on_slider_sliderMoved(int pos)
 	else
 		val=pos;
 	ui.lineEdit->blockSignals(true);
-	ui.lineEdit->setText(QString("%1").arg(val));
+	ui.lineEdit->setText(valueToText(val));
 	ui.lineEdit->blockSignals(false);
 }
 
@@ -200,7 +226,7 @@ void QIntSliderEdit::on_slider_valueChanged(int pos)
 		val=maximum_;
 	value_=val;
 	ui.lineEdit->blockSignals(true);
-	ui.lineEdit->setText(QString("%1").arg(value_));
+	ui.lineEdit->setText(valueToText(val));
 	ui.lineEdit->blockSignals(false);
 	emit valueChanged();
 }
@@ -208,7 +234,7 @@ void QIntSliderEdit::on_slider_valueChanged(int pos)
 void QIntSliderEdit::on_lineEdit_editingFinished()
 {
 	bool ok=false;
-	value_=ui.lineEdit->text().toInt(&ok);
+	value_=textToValue(ui.lineEdit->text());
 	if(power_of_two_)
 		value_=1<<(log2(value_));
 	if(!ok)
