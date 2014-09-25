@@ -21,17 +21,27 @@ QIntSliderEdit::QIntSliderEdit(QWidget *parent)
 	int h=this->height();
 	this->setMinimumHeight(h);
 	setValue(0);
+	ui.slider->installEventFilter(this);
 }
 
 QIntSliderEdit::~QIntSliderEdit()
 {
 }
 
+bool QIntSliderEdit::eventFilter(QObject *object, QEvent *event)
+{
+	if (object == ui.slider && event->type() == QEvent::Wheel)
+	{
+		// Do not want wheel to scroll the slider:
+		return true;
+    }
+    return false;
+}
+
 Qt::Orientation QIntSliderEdit::orientation() const
 {
 	return ui.slider->orientation();
 }
-
 void QIntSliderEdit::setOrientation(Qt::Orientation o)
 {
 	ui.slider->setOrientation(o);

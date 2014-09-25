@@ -36,6 +36,7 @@ class SIMUL_QT_WIDGETS_EXPORT QIntSliderEdit : public QWidget
 public:
 	QIntSliderEdit(QWidget *parent = 0);
 	~QIntSliderEdit();
+	bool eventFilter(QObject *o, QEvent *e);
 
     Qt::Orientation orientation() const;
 	int labelWidth() const

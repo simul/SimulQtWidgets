@@ -17,11 +17,22 @@ QSliderEdit::QSliderEdit(QWidget *parent)
 	int h=this->height();
 	this->setMinimumHeight(h);
 	setValue(0.0);
+	ui.slider->installEventFilter(this);
 }
 
 QSliderEdit::~QSliderEdit()
 {
 
+}
+
+bool QSliderEdit::eventFilter(QObject *object, QEvent *event)
+{
+	if (object == ui.slider && event->type() == QEvent::Wheel)
+	{
+		// Do not want wheel to scroll the slider:
+		return true;
+    }
+    return false;
 }
 
 void QSliderEdit::setLabelWidth(int w)

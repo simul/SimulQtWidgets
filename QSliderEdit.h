@@ -35,6 +35,7 @@ class SIMUL_QT_WIDGETS_EXPORT QSliderEdit : public QWidget
 public:
 	QSliderEdit(QWidget *parent = 0);
 	~QSliderEdit();
+	bool eventFilter(QObject *o, QEvent *e);
 	int labelWidth() const
 	{
 		return labelWidth_;
