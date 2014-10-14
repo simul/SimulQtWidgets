@@ -66,7 +66,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <ImportLibrary>$(SIMUL)/lib/$(Platform)/VC11/$(Configuration)/$(TargetName).lib</ImportLibrary>
-      <ShowProgress>LinkVerboseLib</ShowProgress>
     </Link>
     <PostBuildEvent>
       <Command>echo "$(SIMUL)\exe\$(Platform)/VC11/$(Configuration)/$(TargetFileName)" "$(QTDIR)\plugins\designer"
