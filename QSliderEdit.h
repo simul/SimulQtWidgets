@@ -24,6 +24,7 @@ class SIMUL_QT_WIDGETS_EXPORT QSliderEdit : public QWidget
 {
 	Q_OBJECT
 	Q_PROPERTY(QString title READ title WRITE setTitle DESIGNABLE true)
+	Q_PROPERTY(bool liveUpdate READ liveUpdate WRITE setLiveUpdate DESIGNABLE true)
 	Q_PROPERTY(int labelWidth READ labelWidth WRITE setLabelWidth DESIGNABLE true)
 	Q_PROPERTY(int textWidth READ textWidth WRITE setTextWidth DESIGNABLE true)
 	Q_PROPERTY(double minimum READ minimum WRITE setMinimum DESIGNABLE true)
@@ -68,6 +69,8 @@ public:
 	double step() const;
 	void setLogarithmic(bool l);
 	bool logarithmic() const;
+	void setLiveUpdate(bool l);
+	bool liveUpdate() const;
 	void setValue(QVariant f);
 	void setValue(QVariant f,bool single_valued);
 	QVariant value() const
@@ -93,6 +96,7 @@ protected:
 	double maximum_;
 	double value_;
 	bool logarithmic_;
+	bool liveUpdate_;
 	double step_;
 };
 
