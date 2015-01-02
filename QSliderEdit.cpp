@@ -9,6 +9,7 @@ QSliderEdit::QSliderEdit(QWidget *parent)
 	,maximum_(1.0)
 	,value_(0.0)
 	,logarithmic_(false)
+	,liveUpdate_(false)
 	,step_(0.0)
 {
 	ui.setupUi(this);
@@ -134,6 +135,17 @@ bool QSliderEdit::logarithmic() const
 	return logarithmic_;
 }
 
+void QSliderEdit::setLiveUpdate(bool l)
+{
+	liveUpdate_=l;
+	updateSlider();
+}
+
+bool QSliderEdit::liveUpdate() const
+{
+	return liveUpdate_;
+}
+
 void QSliderEdit::setValue(QVariant f)
 {
 	setValue(f,true);
@@ -172,17 +184,22 @@ QString QSliderEdit::title() const
 
 void QSliderEdit::on_slider_sliderMoved(int pos)
 {
-	double val=(double)(pos-ui.slider->minimum())/(double)(ui.slider->maximum()-ui.slider->minimum());
-	if(logarithmic_)
-	{
-		double logval=(log10(maximum_)-log10(minimum_))*val+log10(minimum_);
-		val=pow(10.0,logval);
-	}
+	if(liveUpdate_)
+		on_slider_valueChanged(pos);
 	else
-		val=(maximum_-minimum_)*val+minimum_;
-	ui.lineEdit->blockSignals(true);
-	ui.lineEdit->setText(valueToText(val));
-	ui.lineEdit->blockSignals(false);
+	{
+		double val=(double)(pos-ui.slider->minimum())/(double)(ui.slider->maximum()-ui.slider->minimum());
+		if(logarithmic_)
+		{
+			double logval=(log10(maximum_)-log10(minimum_))*val+log10(minimum_);
+			val=pow(10.0,logval);
+		}
+		else
+			val=(maximum_-minimum_)*val+minimum_;
+		ui.lineEdit->blockSignals(true);
+		ui.lineEdit->setText(valueToText(val));
+		ui.lineEdit->blockSignals(false);
+	}
 }
 
 QString QSliderEdit::valueToText(double value)
