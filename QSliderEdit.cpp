@@ -18,6 +18,9 @@ QSliderEdit::QSliderEdit(QWidget *parent)
 	this->setMinimumHeight(h);
 	setValue(0.0);
 	ui.slider->installEventFilter(this);
+	ui.label->setWhatsThis(whatsThis());
+	ui.lineEdit->setWhatsThis(whatsThis());
+	ui.slider->setWhatsThis(whatsThis());
 }
 
 QSliderEdit::~QSliderEdit()
