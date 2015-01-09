@@ -19,6 +19,7 @@ QSliderEdit::QSliderEdit(QWidget *parent)
 	this->setMinimumHeight(h);
 	setValue(0.0);
 	ui.slider->installEventFilter(this);
+	setTextWidth(textWidth_);
 }
 
 QSliderEdit::~QSliderEdit()
