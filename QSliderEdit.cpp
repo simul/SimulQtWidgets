@@ -22,6 +22,7 @@ QSliderEdit::QSliderEdit(QWidget *parent)
 	ui.label->setWhatsThis(whatsThis());
 	ui.lineEdit->setWhatsThis(whatsThis());
 	ui.slider->setWhatsThis(whatsThis());
+	setTextWidth(textWidth_);
 }
 
 QSliderEdit::~QSliderEdit()
