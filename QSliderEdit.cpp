@@ -10,6 +10,7 @@ QSliderEdit::QSliderEdit(QWidget *parent)
 	,value_(0.0)
 	,logarithmic_(false)
 	,liveUpdate_(false)
+	,showButtons_(false)
 	,step_(0.0)
 {
 	ui.setupUi(this);
@@ -23,6 +24,7 @@ QSliderEdit::QSliderEdit(QWidget *parent)
 	ui.lineEdit->setWhatsThis(whatsThis());
 	ui.slider->setWhatsThis(whatsThis());
 	setTextWidth(textWidth_);
+	setShowButtons(showButtons_);
 }
 
 QSliderEdit::~QSliderEdit()
@@ -136,6 +138,27 @@ bool QSliderEdit::logarithmic() const
 	return logarithmic_;
 }
 
+void QSliderEdit::setShowButtons(bool l)
+{
+	showButtons_=l;
+	if(showButtons_)
+	{
+		ui.increment->show();
+		ui.decrement->show();
+	}
+	else
+	{
+		ui.increment->hide();
+		ui.decrement->hide();
+	}
+	update();
+}
+
+bool QSliderEdit::showButtons() const
+{
+	return showButtons_;
+}
+
 void QSliderEdit::setLiveUpdate(bool l)
 {
 	liveUpdate_=l;
@@ -211,6 +234,21 @@ QString QSliderEdit::valueToText(double value)
 double QSliderEdit::textToValue(QString s,bool *ok)
 {
 	return s.toDouble(ok);
+}
+
+void QSliderEdit::on_increment_clicked()
+{
+	incrementDecrement(1);
+}
+
+void QSliderEdit::on_decrement_clicked()
+{
+	incrementDecrement(-1);
+}
+
+void QSliderEdit::incrementDecrement(int step)
+{
+	ui.slider->setValue(ui.slider->value()+step*ui.slider->singleStep());
 }
 
 void QSliderEdit::on_slider_valueChanged(int pos)
