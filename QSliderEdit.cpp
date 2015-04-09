@@ -7,6 +7,7 @@ QSliderEdit::QSliderEdit(QWidget *parent)
 	,textWidth_(80)
 	,minimum_(0.0)
 	,maximum_(1.0)
+	,defaultValue_(0.0)
 	,value_(0.0)
 	,logarithmic_(false)
 	,liveUpdate_(false)
@@ -245,6 +246,12 @@ void QSliderEdit::on_decrement_clicked()
 {
 	incrementDecrement(-1);
 }
+
+void QSliderEdit::on_reset_clicked()
+{
+	setValue(defaultValue_);
+}
+
 
 void QSliderEdit::incrementDecrement(int step)
 {

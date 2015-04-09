@@ -30,6 +30,7 @@ class SIMUL_QT_WIDGETS_EXPORT QSliderEdit : public QWidget
 	Q_PROPERTY(bool showButtons READ showButtons WRITE setShowButtons DESIGNABLE true)
 	Q_PROPERTY(double minimum READ minimum WRITE setMinimum DESIGNABLE true)
 	Q_PROPERTY(double maximum READ maximum WRITE setMaximum DESIGNABLE true)
+	Q_PROPERTY(double defaultValue READ defaultValue WRITE setDefaultValue DESIGNABLE true)
 	Q_PROPERTY(double step READ step WRITE setStep DESIGNABLE true)
 	Q_PROPERTY(QVariant value READ value WRITE setValue DESIGNABLE true)
 	Q_PROPERTY(bool logarithmic READ logarithmic WRITE setLogarithmic DESIGNABLE true)
@@ -66,6 +67,14 @@ public:
 	{
 		return maximum_;
 	}
+	void setDefaultValue(double f)
+	{
+		defaultValue_ = f;
+	}
+	double defaultValue() const
+	{
+		return defaultValue_;
+	}
 	void setStep(double step);
 	double step() const;
 	void setLogarithmic(bool l);
@@ -90,6 +99,7 @@ signals:
 public slots:
 	void on_increment_clicked();
 	void on_decrement_clicked();
+	void on_reset_clicked();
 	void on_slider_sliderMoved(int);
 	void on_slider_valueChanged(int);
 	void on_lineEdit_editingFinished();
@@ -100,6 +110,7 @@ protected:
 	int textWidth_;
 	double minimum_;
 	double maximum_;
+	double defaultValue_;
 	double value_;
 	bool logarithmic_;
 	bool liveUpdate_;

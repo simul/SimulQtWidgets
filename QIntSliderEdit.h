@@ -28,6 +28,7 @@ class SIMUL_QT_WIDGETS_EXPORT QIntSliderEdit : public QWidget
 	Q_PROPERTY(int textWidth READ textWidth WRITE setTextWidth DESIGNABLE true)
 	Q_PROPERTY(int minimum READ minimum WRITE setMinimum DESIGNABLE true)
 	Q_PROPERTY(int maximum READ maximum WRITE setMaximum DESIGNABLE true)
+	Q_PROPERTY(double defaultValue READ defaultValue WRITE setDefaultValue DESIGNABLE true)
 	Q_PROPERTY(QVariant value READ value WRITE setValue DESIGNABLE true)
 	Q_PROPERTY(bool powerOfTwo READ powerOfTwo WRITE setPowerOfTwo DESIGNABLE true)
     Q_PROPERTY(Qt::Orientation orientation READ orientation WRITE setOrientation DESIGNABLE true)
@@ -58,6 +59,14 @@ public:
 	{
 		return maximum_;
 	}
+	void setDefaultValue(int f)
+	{
+		defaultValue_ = f;
+	}
+	int defaultValue() const
+	{
+		return defaultValue_;
+	}
 	void setMaximum(int f);
 	void setPowerOfTwo(bool l);
 	bool powerOfTwo() const;
@@ -78,7 +87,8 @@ public:
 signals:
 	void valueChanged();
 public slots:
-    void setOrientation(Qt::Orientation);
+	void setOrientation(Qt::Orientation);
+	void on_reset_clicked();
 	void on_slider_sliderMoved(int);
 	void on_slider_valueChanged(int);
 	void on_lineEdit_editingFinished();
@@ -89,6 +99,7 @@ private:
 	int textWidth_;
 	int minimum_;
 	int maximum_;
+	int defaultValue_;
 	int value_;
 	bool power_of_two_;
 	bool readonly_text;

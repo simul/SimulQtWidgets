@@ -13,6 +13,7 @@ QIntSliderEdit::QIntSliderEdit(QWidget *parent)
 	,textWidth_(80)
 	,minimum_(0)
 	,maximum_(100)
+	,defaultValue_(0)
 	,value_(0)
 	,power_of_two_(false)
 	,readonly_text(false)
@@ -165,6 +166,11 @@ QStringList QIntSliderEdit::enums() const
 void QIntSliderEdit::setValue(QVariant f)
 {
 	setValue(f,true);
+}
+
+void QIntSliderEdit::on_reset_clicked()
+{
+	setValue(defaultValue_);
 }
 
 void QIntSliderEdit::setValue(QVariant f,bool single_valued)

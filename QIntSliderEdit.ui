@@ -116,6 +116,25 @@
      </property>
     </widget>
    </item>
+   <item>
+    <widget class="QPushButton" name="reset">
+     <property name="minimumSize">
+      <size>
+       <width>14</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>14</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
