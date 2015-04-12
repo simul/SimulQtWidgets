@@ -12,11 +12,13 @@ QSliderEdit::QSliderEdit(QWidget *parent)
 	,logarithmic_(false)
 	,liveUpdate_(false)
 	,showButtons_(false)
+	,showDefaultButton_(false)
 	,step_(0.0)
 {
 	ui.setupUi(this);
 	ui.slider->setMinimum(0);
 	ui.slider->setMaximum(1000);
+	ui.reset->setDisabled(true);
 	int h=this->height();
 	this->setMinimumHeight(h);
 	setValue(0.0);
@@ -160,6 +162,20 @@ bool QSliderEdit::showButtons() const
 	return showButtons_;
 }
 
+void QSliderEdit::setShowDefaultButton(bool l)
+{
+	showDefaultButton_=l;
+	if(!showDefaultButton_||value_==defaultValue_)
+		ui.reset->setDisabled(true);
+	else
+		ui.reset->setDisabled(false);
+}
+
+bool QSliderEdit::showDefaultButton() const
+{
+	return showDefaultButton_;
+}
+
 void QSliderEdit::setLiveUpdate(bool l)
 {
 	liveUpdate_=l;
@@ -186,6 +202,7 @@ void QSliderEdit::setValue(QVariant f,bool single_valued)
 		value_=minimum_;
 	if(value_>maximum_)
 		value_=maximum_;
+	setShowDefaultButton(showDefaultButton_);
 	this->blockSignals(true);
 	ui.slider->blockSignals(true);
 	updateSlider();
@@ -250,6 +267,7 @@ void QSliderEdit::on_decrement_clicked()
 void QSliderEdit::on_reset_clicked()
 {
 	setValue(defaultValue_);
+	emit valueChanged();
 }
 
 
@@ -273,6 +291,7 @@ void QSliderEdit::on_slider_valueChanged(int pos)
 	if(val>maximum_)
 		val=maximum_;
 	value_=val;
+	setShowDefaultButton(showDefaultButton_);
 	ui.lineEdit->blockSignals(true);
 	ui.lineEdit->setText(valueToText(value_));
 	ui.lineEdit->blockSignals(false);
