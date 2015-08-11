@@ -80,6 +80,15 @@
     <ClCompile Include="GeneratedFiles\Debug\moc_WidgetCollection.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
+    <ClCompile Include="QColourEdit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QColourEdit.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QColourEdit.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_QIntSliderEdit.h">
@@ -89,6 +98,12 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_QSliderEdit.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomWidget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_QColourEdit.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -115,6 +130,12 @@
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="QSliderEdit.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QColourEdit.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QColourEdit.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
   </ItemGroup>
