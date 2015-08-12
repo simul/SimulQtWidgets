@@ -1,7 +1,7 @@
 #include "QIntSliderEditInterface.h"
-#include <QtPlugin>
-#include <QDesignerFormEditorInterface>
-#include <QExtensionManager>
+//#include <QtPlugin>
+//#include <QDesignerFormEditorInterface>
+//#include <QExtensionManager>
 #include "QIntSliderEdit.h"
 
 
@@ -21,8 +21,8 @@ void QIntSliderEditInterface::initialize(QDesignerFormEditorInterface *formEdito
 	if(initialized)
 		return;
 
-	QExtensionManager *manager = formEditor->extensionManager();
-	Q_ASSERT(manager != 0);
+	//QExtensionManager *manager = formEditor->extensionManager();
+	//Q_ASSERT(manager != 0);
 
 	//manager->registerExtensions(new QSliderFactory(manager),
 	//							Q_TYPEID(QDesignerPropertySheetExtension));

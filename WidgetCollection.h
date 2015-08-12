@@ -14,8 +14,6 @@
 #else
 	#define SIMUL_QT_WIDGETS_EXPORT
 #endif
- #include <QtDesigner/QtDesigner>
- #include <QtCore/qplugin.h>
 
 class SIMUL_QT_WIDGETS_EXPORT WidgetCollection: public QObject, public QDesignerCustomWidgetCollectionInterface
 {

@@ -1,6 +1,6 @@
 #include "WidgetCollection.h"
 
-#include <QtCore/QtPlugin>
+//#include <QtCore/QtPlugin>
 #include "SliderEditInterface.h"
 #include "QIntSliderEditInterface.h"
 
