@@ -1,7 +1,7 @@
 #ifndef WIDGETCOLLECTION_H
 #define WIDGETCOLLECTION_H
 
-#include "CustomWidget.h"
+#include <QDesignerCustomWidgetInterface>
 #ifdef STATIC_LIB
 #define QDESIGNER_WIDGET_EXPORT
 #endif
