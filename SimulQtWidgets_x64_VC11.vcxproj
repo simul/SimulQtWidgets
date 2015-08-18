@@ -111,6 +111,7 @@ copy "$(SIMUL)/lib/$(Platform)/VC11/$(Configuration)" "$(QTDIR)\plugins\designer
     <ClCompile Include="QIntSliderEdit.cpp" />
     <ClCompile Include="QIntSliderEditInterface.cpp" />
     <ClCompile Include="QSliderEdit.cpp" />
+    <ClCompile Include="SimulQtWidgets.cpp" />
     <ClCompile Include="SliderEditInterface.cpp" />
     <ClCompile Include="WidgetCollection.cpp" />
     <ClCompile Include="GeneratedFiles\Release\moc_QIntSliderEdit.cpp">
@@ -308,6 +309,7 @@ copy "$(SIMUL)/lib/$(Platform)/VC11/$(Configuration)" "$(QTDIR)\plugins\designer
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_QColourEdit.h" />
+    <ClInclude Include="SimulQtWidgets.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
