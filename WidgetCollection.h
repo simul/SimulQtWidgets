@@ -14,13 +14,12 @@
 #else
 	#define SIMUL_QT_WIDGETS_EXPORT
 #endif
- #include <QtDesigner/QtDesigner>
- #include <QtCore/qplugin.h>
+ #include <QtCore/QObject>
 
 class SIMUL_QT_WIDGETS_EXPORT WidgetCollection: public QObject, public QDesignerCustomWidgetCollectionInterface
 {
 	Q_OBJECT
-	Q_PLUGIN_METADATA(IID "simul.SimulWidgets" )
+	Q_PLUGIN_METADATA(IID "simul.SimulWidgets" FILE "SimulWidgets.json")
 	Q_INTERFACES(QDesignerCustomWidgetCollectionInterface)
 
 public:

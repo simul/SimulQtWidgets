@@ -66,8 +66,10 @@
       <ImportLibrary>$(SIMUL)/lib/$(Platform)/VC11/$(Configuration)/$(TargetName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>echo copy "$(SIMUL)\exe\$(Platform)\VC11\$(Configuration)\$(TargetFileName)" "$(QTDIR)\plugins\designer"
-copy "$(SIMUL)\exe\$(Platform)\VC11\$(Configuration)\$(TargetFileName)" "$(QTDIR)\plugins\designer"
+      <Command>copy "$(SIMUL)\exe\$(Platform)\VC11\$(Configuration)\$(TargetFileName)" "$(QTDIR)\plugins\designer"
+copy "$(SIMUL)\lib\$(Platform)\VC11\$(Configuration)\$(TargetName).lib" "$(QTDIR)\plugins\designer"
+copy "*.json" "$(QTDIR)\plugins\designer"
+
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -308,6 +310,10 @@ copy "$(SIMUL)/lib/$(Platform)/VC11/$(Configuration)" "$(QTDIR)\plugins\designer
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_QColourEdit.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+    <None Include="SimulWidgets.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

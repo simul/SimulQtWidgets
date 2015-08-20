@@ -89,9 +89,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_QColourEdit.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="SimulQtWidgets.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="QIntSliderEdit.h">
@@ -138,8 +135,9 @@
     <ClInclude Include="GeneratedFiles\ui_QColourEdit.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="SimulQtWidgets.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+    <None Include="SimulWidgets.json" />
   </ItemGroup>
 </Project>
