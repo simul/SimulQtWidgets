@@ -19,7 +19,7 @@
 class SIMUL_QT_WIDGETS_EXPORT WidgetCollection: public QObject, public QDesignerCustomWidgetCollectionInterface
 {
 	Q_OBJECT
-	Q_PLUGIN_METADATA(IID "simul.SimulWidgets" FILE "SimulWidgets.json")
+	Q_PLUGIN_METADATA(IID "simul.SimulWidgets")
 	Q_INTERFACES(QDesignerCustomWidgetCollectionInterface)
 
 public:
