@@ -136,8 +136,4 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="README.md" />
-    <None Include="SimulWidgets.json" />
-  </ItemGroup>
 </Project>

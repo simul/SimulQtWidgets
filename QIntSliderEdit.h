@@ -28,7 +28,7 @@ class SIMUL_QT_WIDGETS_EXPORT QIntSliderEdit : public QWidget
 	Q_PROPERTY(int textWidth READ textWidth WRITE setTextWidth DESIGNABLE true)
 	Q_PROPERTY(int minimum READ minimum WRITE setMinimum DESIGNABLE true)
 	Q_PROPERTY(int maximum READ maximum WRITE setMaximum DESIGNABLE true)
-	Q_PROPERTY(double defaultValue READ defaultValue WRITE setDefaultValue DESIGNABLE true)
+	Q_PROPERTY(int defaultValue READ defaultValue WRITE setDefaultValue DESIGNABLE true)
 	Q_PROPERTY(bool showDefaultButton READ showDefaultButton WRITE setShowDefaultButton DESIGNABLE true)
 	Q_PROPERTY(QVariant value READ value WRITE setValue DESIGNABLE true)
 	Q_PROPERTY(bool powerOfTwo READ powerOfTwo WRITE setPowerOfTwo DESIGNABLE true)

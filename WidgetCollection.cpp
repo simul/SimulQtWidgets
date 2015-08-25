@@ -1,6 +1,6 @@
 #include "WidgetCollection.h"
 
-#include <QtCore/QtPlugin>
+//#include <QtCore/QtPlugin>
 #include "SliderEditInterface.h"
 #include "QIntSliderEditInterface.h"
 
@@ -42,4 +42,6 @@
      return widgets;
  }
 
-//Q_EXPORT_PLUGIN2(SimulQtWidgets, WidgetCollection)
+#ifndef QT5
+Q_EXPORT_PLUGIN2(SimulQtWidgets, WidgetCollection)
+#endif

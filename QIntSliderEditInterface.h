@@ -2,7 +2,7 @@
 #define QSLIDEREDITINTERFACE_H
 
 #include <QWidget>
-#include <QtUiPlugin/QDesignerCustomWidgetInterface>
+#include "CustomWidget.h"
 #ifndef _LIB
 	#if defined(SIMUL_QT_WIDGETS)
 	#define SIMUL_QT_WIDGETS_EXPORT Q_DECL_EXPORT

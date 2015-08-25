@@ -1,7 +1,7 @@
 #ifndef WIDGETCOLLECTION_H
 #define WIDGETCOLLECTION_H
 
-#include <QtUiPlugin/QDesignerCustomWidgetInterface>
+#include "CustomWidget.h"
 #ifdef STATIC_LIB
 #define QDESIGNER_WIDGET_EXPORT
 #endif
@@ -14,12 +14,12 @@
 #else
 	#define SIMUL_QT_WIDGETS_EXPORT
 #endif
- #include <QtCore/QObject>
+ #include <QtCore/qplugin.h>
 
 class SIMUL_QT_WIDGETS_EXPORT WidgetCollection: public QObject, public QDesignerCustomWidgetCollectionInterface
 {
 	Q_OBJECT
-	Q_PLUGIN_METADATA(IID "simul.SimulWidgets")
+	Q_PLUGIN_METADATA(IID "simul.SimulWidgets" )
 	Q_INTERFACES(QDesignerCustomWidgetCollectionInterface)
 
 public:

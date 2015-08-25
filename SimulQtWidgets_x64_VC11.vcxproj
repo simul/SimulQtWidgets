@@ -51,7 +51,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>.\GeneratedFiles;$(QTDIR)\include;.\GeneratedFiles\$(Configuration);$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtDesigner;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtGui;.\;$(SIMUL)\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>QT5;QT_NO_PLUGIN_CHECK;UNICODE;WIN64;QT_THREAD_SUPPORT;QT_PLUGIN;QT_NO_DEBUG;NDEBUG;QDESIGNER_EXPORT_WIDGETS;QT_CORE_LIB;QT_GUI_LIB;SIMUL_QT_WIDGETS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>QT5;QT_NO_PLUGIN_CHECK;UNICODE;WIN64;QT_THREAD_SUPPORT;QT_PLUGIN;QT_NO_DEBUG;NDEBUG;QDESIGNER_EXPORT_WIDGETS;QT_CORE_LIB;QT_GUI_LIB;SIMUL_QT_WIDGETS;QT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -66,10 +66,9 @@
       <ImportLibrary>$(SIMUL)/lib/$(Platform)/VC11/$(Configuration)/$(TargetName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SIMUL)\exe\$(Platform)\VC11\$(Configuration)\$(TargetFileName)" "$(QTDIR)\plugins\designer"
-copy "$(SIMUL)\lib\$(Platform)\VC11\$(Configuration)\$(TargetName).lib" "$(QTDIR)\plugins\designer"
-copy "*.json" "$(QTDIR)\plugins\designer"
-
+      <Command>if "%SIMUL_PLUGIN_DEPLOY%" NEQ  "" ( 
+copy "$(SIMUL)\exe\$(Platform)\VC11\$(Configuration)\$(TargetFileName)" "$(QTDIR)\plugins\designer"
+)
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -77,7 +76,7 @@ copy "*.json" "$(QTDIR)\plugins\designer"
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>.\GeneratedFiles;$(QTDIR)\include;.\GeneratedFiles\$(Configuration);$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtDesigner;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtGui;.\;$(SIMUL)\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>QT5;QT_NO_PLUGIN_CHECK;_DEBUG;UNICODE;WIN64;QT_THREAD_SUPPORT;QT_PLUGIN;QDESIGNER_EXPORT_WIDGETS;QT_CORE_LIB;QT_GUI_LIB;SIMUL_QT_WIDGETS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>QT5;QT_NO_PLUGIN_CHECK;_DEBUG;UNICODE;WIN64;QT_THREAD_SUPPORT;QT_PLUGIN;QDESIGNER_EXPORT_WIDGETS;QT_CORE_LIB;QT_GUI_LIB;SIMUL_QT_WIDGETS;QT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -92,9 +91,8 @@ copy "*.json" "$(QTDIR)\plugins\designer"
       <ImportLibrary>$(SIMUL)/lib/$(Platform)/VC11/$(Configuration)/$(TargetName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SIMUL)/exe/$(Platform)/VC11/$(Configuration)" "$(QTDIR)\plugins\designer\$(TargetFileName)"
-copy "$(SIMUL)/lib/$(Platform)/VC11/$(Configuration)" "$(QTDIR)\plugins\designer\$(SafeParentName).lib"
-</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Template|x64'">
@@ -149,49 +147,49 @@ copy "$(SIMUL)/lib/$(Platform)/VC11/$(Configuration)" "$(QTDIR)\plugins\designer
   <ItemGroup>
     <CustomBuild Include="QIntSliderEdit.h">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing %(Filename)%(Extension)...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -D_DEBUG -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -D_DEBUG -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -DQT_DLL -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(Configuration)\moc_%(Filename).cpp;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing %(Filename)%(Extension)...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQT_NO_DEBUG -DNDEBUG -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQT_NO_DEBUG -DNDEBUG -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -DQT_DLL -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(Configuration)\moc_%(Filename).cpp;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="QIntSliderEditInterface.h">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing %(Filename)%(Extension)...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -D_DEBUG -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -D_DEBUG -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -DQT_DLL -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(Configuration)\moc_%(Filename).cpp;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing %(Filename)%(Extension)...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQT_NO_DEBUG -DNDEBUG -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQT_NO_DEBUG -DNDEBUG -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -DQT_DLL -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(Configuration)\moc_%(Filename).cpp;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="QSliderEdit.h">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing %(Filename)%(Extension)...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -D_DEBUG -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -D_DEBUG -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -DQT_DLL -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(Configuration)\moc_%(Filename).cpp;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing %(Filename)%(Extension)...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQT_NO_DEBUG -DNDEBUG -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQT_NO_DEBUG -DNDEBUG -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -DQT_DLL -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(Configuration)\moc_%(Filename).cpp;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="SliderEditInterface.h">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing %(Filename)%(Extension)...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -D_DEBUG -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -D_DEBUG -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -DQT_DLL -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(Configuration)\moc_%(Filename).cpp;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing %(Filename)%(Extension)...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQT_NO_DEBUG -DNDEBUG -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQT_NO_DEBUG -DNDEBUG -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -DQT_DLL -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(Configuration)\moc_%(Filename).cpp;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="WidgetCollection.h">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -D_DEBUG -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -D_DEBUG -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -DQT_DLL -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(Configuration)\moc_%(Filename).cpp;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQT_NO_DEBUG -DNDEBUG -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQT_NO_DEBUG -DNDEBUG -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -DQT_DLL -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(Configuration)\moc_%(Filename).cpp;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
@@ -289,11 +287,11 @@ copy "$(SIMUL)/lib/$(Platform)/VC11/$(Configuration)" "$(QTDIR)\plugins\designer
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing QColourEdit.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -D_DEBUG -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -D_WINDLL "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -D_DEBUG -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -DQT_DLL -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing QColourEdit.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQT_NO_DEBUG -DNDEBUG -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -D_WINDLL "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT5 -DQT_NO_PLUGIN_CHECK -DUNICODE -DWIN64 -DQT_THREAD_SUPPORT -DQT_PLUGIN -DQT_NO_DEBUG -DNDEBUG -DQDESIGNER_EXPORT_WIDGETS -DQT_CORE_LIB -DQT_GUI_LIB -DSIMUL_QT_WIDGETS -DQT_DLL -D_WINDLL  "-I.\GeneratedFiles" "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(Configuration)\." "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtDesigner" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtGui" "-I." "-I$(SIMUL)\.."</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -310,10 +308,6 @@ copy "$(SIMUL)/lib/$(Platform)/VC11/$(Configuration)" "$(QTDIR)\plugins\designer
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_QColourEdit.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="README.md" />
-    <None Include="SimulWidgets.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
