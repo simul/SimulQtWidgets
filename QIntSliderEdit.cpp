@@ -258,15 +258,13 @@ void QIntSliderEdit::on_slider_valueChanged(int pos)
 
 void QIntSliderEdit::on_lineEdit_editingFinished()
 {
-	bool ok=false;
 	value_=textToValue(ui.lineEdit->text());
 	if(power_of_two_)
 		value_=1<<(log2(value_));
-	if(!ok)
-		return;
 	ui.slider->blockSignals(true);
 	updateSlider();
 	ui.slider->blockSignals(false);
+	setShowDefaultButton(showDefaultButton_);
 	emit valueChanged();
 }
 

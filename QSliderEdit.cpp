@@ -307,6 +307,7 @@ void QSliderEdit::on_lineEdit_editingFinished()
 	ui.slider->blockSignals(true);
 	updateSlider();
 	ui.slider->blockSignals(false);
+	setShowDefaultButton(showDefaultButton_);
 	emit valueChanged();
 }
 
