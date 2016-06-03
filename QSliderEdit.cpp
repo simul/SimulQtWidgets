@@ -270,7 +270,6 @@ void QSliderEdit::on_reset_clicked()
 	emit valueChanged();
 }
 
-
 void QSliderEdit::incrementDecrement(int step)
 {
 	ui.slider->setValue(ui.slider->value()+step*ui.slider->singleStep());

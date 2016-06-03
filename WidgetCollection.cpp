@@ -4,6 +4,7 @@
 #include "SliderEditInterface.h"
 #include "QIntSliderEditInterface.h"
 #include "QLabelEditInterface.h"
+#include "QVectorEditInterface.h"
 
 #ifdef QT5
 	#ifdef _DEBUG
@@ -37,6 +38,7 @@
      widgets.append(new QSliderEditInterface(this));
      widgets.append(new QIntSliderEditInterface(this));
      widgets.append(new QLabelEditInterface(this));
+     widgets.append(new QVectorEditInterface(this));
  }
 
  QList<QDesignerCustomWidgetInterface*> WidgetCollection::customWidgets() const
