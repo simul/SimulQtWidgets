@@ -124,6 +124,7 @@ void QVectorEdit::setValue(QVector3D f,bool single_valued)
 		ui.z->setText("");
 	}
 	blockSignals(false);
+	update();
 }
 
 void QVectorEdit::setLiveUpdate(bool l)
