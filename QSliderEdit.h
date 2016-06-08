@@ -27,6 +27,8 @@ class SIMUL_QT_WIDGETS_EXPORT QSliderEdit : public QWidget
 	Q_PROPERTY(bool liveUpdate READ liveUpdate WRITE setLiveUpdate DESIGNABLE true)
 	Q_PROPERTY(int labelWidth READ labelWidth WRITE setLabelWidth DESIGNABLE true)
 	Q_PROPERTY(int textWidth READ textWidth WRITE setTextWidth DESIGNABLE true)
+	Q_PROPERTY(QString units READ units WRITE setUnits DESIGNABLE true)
+	Q_PROPERTY(int unitsWidth READ unitsWidth WRITE setUnitsWidth DESIGNABLE true)
 	Q_PROPERTY(bool showButtons READ showButtons WRITE setShowButtons DESIGNABLE true)
 	Q_PROPERTY(bool showDefaultButton READ showDefaultButton WRITE setShowDefaultButton DESIGNABLE true)
 	Q_PROPERTY(double minimum READ minimum WRITE setMinimum DESIGNABLE true)
@@ -50,6 +52,11 @@ public:
 		return textWidth_;
 	}
 	void setTextWidth(int w);
+	int unitsWidth() const
+	{
+		return unitsWidth_;
+	}
+	void setUnitsWidth(int w);
 	Qt::Orientation	orientation() const;
 	void setOrientation(Qt::Orientation);
 	void setMinimum(double f)
@@ -95,6 +102,8 @@ public:
 	}
 	void setTitle(QString f);
 	QString title() const;
+	void setUnits(QString f);
+	QString units() const;
 	virtual QString valueToText(double value);
 	virtual double textToValue(QString s,bool *ok);
 	virtual void incrementDecrement(int step);
@@ -112,6 +121,7 @@ protected:
 	Ui::QSliderEdit ui;
 	int labelWidth_;
 	int textWidth_;
+	int unitsWidth_;
 	double minimum_;
 	double maximum_;
 	double defaultValue_;

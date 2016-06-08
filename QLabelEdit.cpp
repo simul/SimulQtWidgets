@@ -3,6 +3,7 @@
 QLabelEdit::QLabelEdit(QWidget *parent)
 	: QWidget(parent)
 	,labelWidth_(80)
+	,unitsWidth_(40)
 	,showDefaultButton_(true)
 {
 	ui.setupUi(this);
@@ -81,4 +82,29 @@ void QLabelEdit::setLabelWidth(int w)
 	s.setWidth(w);
 	ui.label->setMaximumSize(s);
 	update();
+}
+
+
+void QLabelEdit::setUnitsWidth(int w)
+{
+	unitsWidth_=w;
+	ui.units->setMinimumWidth(w);
+	ui.units->setMaximumWidth(w);
+	QSize s=ui.units->minimumSize();
+	s.setWidth(w);
+	ui.units->setMinimumSize(s);
+	s=ui.units->maximumSize();
+	s.setWidth(w);
+	ui.units->setMaximumSize(s);
+	update();
+}
+
+void QLabelEdit::setUnits(QString f)
+{
+	ui.units->setText(f);
+}
+
+QString QLabelEdit::units() const
+{
+	return ui.units->text();
 }

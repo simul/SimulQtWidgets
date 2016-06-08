@@ -11,6 +11,8 @@ class SIMUL_QT_WIDGETS_EXPORT QIntSliderEdit : public QWidget
 	Q_PROPERTY(QString title READ title WRITE setTitle DESIGNABLE true)
 	Q_PROPERTY(int labelWidth READ labelWidth WRITE setLabelWidth DESIGNABLE true)
 	Q_PROPERTY(int textWidth READ textWidth WRITE setTextWidth DESIGNABLE true)
+	Q_PROPERTY(QString units READ units WRITE setUnits DESIGNABLE true)
+	Q_PROPERTY(int unitsWidth READ unitsWidth WRITE setUnitsWidth DESIGNABLE true)
 	Q_PROPERTY(int minimum READ minimum WRITE setMinimum DESIGNABLE true)
 	Q_PROPERTY(int maximum READ maximum WRITE setMaximum DESIGNABLE true)
 	Q_PROPERTY(int defaultValue READ defaultValue WRITE setDefaultValue DESIGNABLE true)
@@ -36,6 +38,11 @@ public:
 		return textWidth_;
 	}
 	void setTextWidth(int w);
+	int unitsWidth() const
+	{
+		return unitsWidth_;
+	}
+	void setUnitsWidth(int w);
 	void setMinimum(int f);
 	int minimum() const
 	{
@@ -71,6 +78,8 @@ public:
 	}
 	void setTitle(QString f);
 	QString title() const;
+	void setUnits(QString f);
+	QString units() const;
 	virtual QString valueToText(int value);
 	virtual int textToValue(QString s);
 signals:
@@ -86,6 +95,7 @@ private:
 	Ui::QIntSliderEdit ui;
 	int labelWidth_;
 	int textWidth_;
+	int unitsWidth_;
 	int minimum_;
 	int maximum_;
 	int defaultValue_;

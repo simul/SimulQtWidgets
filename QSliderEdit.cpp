@@ -5,6 +5,7 @@ QSliderEdit::QSliderEdit(QWidget *parent)
 	: QWidget(parent)
 	,labelWidth_(80)
 	,textWidth_(80)
+	,unitsWidth_(40)
 	,minimum_(0.0)
 	,maximum_(1.0)
 	,defaultValue_(0.0)
@@ -324,4 +325,29 @@ void QSliderEdit::updateSlider()
 	ui.slider->setValue((int)pos);
 	ui.slider->blockSignals(false);
 	emit valueChanged();
+}
+
+
+void QSliderEdit::setUnitsWidth(int w)
+{
+	unitsWidth_=w;
+	ui.units->setMinimumWidth(w);
+	ui.units->setMaximumWidth(w);
+	QSize s=ui.units->minimumSize();
+	s.setWidth(w);
+	ui.units->setMinimumSize(s);
+	s=ui.units->maximumSize();
+	s.setWidth(w);
+	ui.units->setMaximumSize(s);
+	update();
+}
+
+void QSliderEdit::setUnits(QString f)
+{
+	ui.units->setText(f);
+}
+
+QString QSliderEdit::units() const
+{
+	return ui.units->text();
 }

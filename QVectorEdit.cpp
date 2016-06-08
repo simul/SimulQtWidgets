@@ -6,6 +6,7 @@ QVectorEdit::QVectorEdit(QWidget *parent)
 	,colourEdit_(false)
 	,labelWidth_(80)
 	,textWidth_(80)
+	,unitsWidth_(40)
 	,liveUpdate_(false)
 {
 	ui.setupUi(this);
@@ -105,10 +106,7 @@ QVector3D QVectorEdit::value() const
 
 void QVectorEdit::setValue(QVector3D f,bool single_valued)
 {
-	bool ok;
 	value_=f;
-	if(!ok)
-		return;
 	setShowDefaultButton();
 	blockSignals(true);
 	if(single_valued)
@@ -179,4 +177,28 @@ void QVectorEdit::setTitle(QString f)
 QString QVectorEdit::title() const
 {
 	return ui.label->text();
+}
+
+void QVectorEdit::setUnitsWidth(int w)
+{
+	unitsWidth_=w;
+	ui.units->setMinimumWidth(w);
+	ui.units->setMaximumWidth(w);
+	QSize s=ui.units->minimumSize();
+	s.setWidth(w);
+	ui.units->setMinimumSize(s);
+	s=ui.units->maximumSize();
+	s.setWidth(w);
+	ui.units->setMaximumSize(s);
+	update();
+}
+
+void QVectorEdit::setUnits(QString f)
+{
+	ui.units->setText(f);
+}
+
+QString QVectorEdit::units() const
+{
+	return ui.units->text();
 }

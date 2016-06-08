@@ -14,6 +14,8 @@ class SIMUL_QT_WIDGETS_EXPORT QLabelEdit : public QWidget
 	Q_PROPERTY(QString defaultValue READ defaultValue WRITE setDefaultValue DESIGNABLE true)
 	Q_PROPERTY(QString title READ title WRITE setTitle DESIGNABLE true)
 	Q_PROPERTY(int labelWidth READ labelWidth WRITE setLabelWidth DESIGNABLE true)
+	Q_PROPERTY(QString units READ units WRITE setUnits DESIGNABLE true)
+	Q_PROPERTY(int unitsWidth READ unitsWidth WRITE setUnitsWidth DESIGNABLE true)
 
 public:
 	QLabelEdit(QWidget *parent = 0);
@@ -28,7 +30,12 @@ public:
 		return labelWidth_;
 	}
 	void setLabelWidth(int w);
-
+	
+	int unitsWidth() const
+	{
+		return unitsWidth_;
+	}
+	void setUnitsWidth(int w);
 	void setDefaultValue(QString f)
 	{
 		defaultValue_ = f;
@@ -40,6 +47,8 @@ public:
 	}
 	void setTitle(QString f);
 	QString title() const;
+	void setUnits(QString f);
+	QString units() const;
 public slots:
 	void on_lineEdit_editingFinished();
 	void on_reset_clicked();
@@ -49,6 +58,7 @@ private:
 	Ui::QLabelEdit ui;
 	
 	int labelWidth_;
+	int unitsWidth_;
 	QString value_,defaultValue_;
 
 	bool showDefaultButton_;

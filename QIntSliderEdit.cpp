@@ -11,6 +11,7 @@ QIntSliderEdit::QIntSliderEdit(QWidget *parent)
 	: QWidget(parent)
 	,labelWidth_(80)
 	,textWidth_(80)
+	,unitsWidth_(40)
 	,minimum_(0)
 	,maximum_(100)
 	,defaultValue_(0)
@@ -208,6 +209,16 @@ QString QIntSliderEdit::title() const
 	return ui.label->text();
 }
 
+void QIntSliderEdit::setUnits(QString f)
+{
+	ui.units->setText(f);
+}
+
+QString QIntSliderEdit::units() const
+{
+	return ui.units->text();
+}
+
 QString QIntSliderEdit::valueToText(int value)
 {
 	if(enums_.size()&&value>=0&&value<enums_.size())
@@ -296,4 +307,18 @@ void QIntSliderEdit::setShowDefaultButton(bool l)
 bool QIntSliderEdit::showDefaultButton() const
 {
 	return showDefaultButton_;
+}
+
+void QIntSliderEdit::setUnitsWidth(int w)
+{
+	unitsWidth_=w;
+	ui.units->setMinimumWidth(w);
+	ui.units->setMaximumWidth(w);
+	QSize s=ui.units->minimumSize();
+	s.setWidth(w);
+	ui.units->setMinimumSize(s);
+	s=ui.units->maximumSize();
+	s.setWidth(w);
+	ui.units->setMaximumSize(s);
+	update();
 }

@@ -29,6 +29,8 @@ class SIMUL_QT_WIDGETS_EXPORT QVectorEdit : public QWidget
 	Q_PROPERTY(bool liveUpdate READ liveUpdate WRITE setLiveUpdate DESIGNABLE true)
 	Q_PROPERTY(int labelWidth READ labelWidth WRITE setLabelWidth DESIGNABLE true)
 	Q_PROPERTY(int textWidth READ textWidth WRITE setTextWidth DESIGNABLE true)
+	Q_PROPERTY(QString units READ units WRITE setUnits DESIGNABLE true)
+	Q_PROPERTY(int unitsWidth READ unitsWidth WRITE setUnitsWidth DESIGNABLE true)
 	Q_PROPERTY(QVector3D value READ value WRITE setValue DESIGNABLE true)
 		
 public:
@@ -48,6 +50,8 @@ public:
 	}
 	void setTitle(QString f);
 	QString title() const;
+	void setUnits(QString f);
+	QString units() const;
 	void setLiveUpdate(bool l);
 	bool liveUpdate() const;
 	void setColourEdit(bool l);
@@ -62,7 +66,11 @@ public:
 		return textWidth_;
 	}
 	void setTextWidth(int w);
-	
+	int unitsWidth() const
+	{
+		return unitsWidth_;
+	}
+	void setUnitsWidth(int w);
 signals:
 	void valueChanged();
 public slots:
@@ -75,6 +83,7 @@ protected:
 	bool colourEdit_;
 	int labelWidth_;
 	int textWidth_;
+	int unitsWidth_;
 	bool liveUpdate_;
 	QVector3D value_;
 	QVector3D defaultValue_;
