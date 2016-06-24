@@ -11,6 +11,7 @@ class SIMUL_QT_WIDGETS_EXPORT QLabelEdit : public QWidget
 
 	Q_PROPERTY(bool showDefaultButton READ showDefaultButton WRITE setShowDefaultButton DESIGNABLE true)
 	Q_PROPERTY(bool readOnly READ readOnly WRITE setReadOnly DESIGNABLE true)
+	Q_PROPERTY(QString value READ value WRITE setValue DESIGNABLE true)
 	Q_PROPERTY(QString defaultValue READ defaultValue WRITE setDefaultValue DESIGNABLE true)
 	Q_PROPERTY(QString title READ title WRITE setTitle DESIGNABLE true)
 	Q_PROPERTY(int labelWidth READ labelWidth WRITE setLabelWidth DESIGNABLE true)
@@ -25,6 +26,7 @@ public:
 	void setReadOnly(bool l);
 	bool readOnly() const;
 	void setValue(QString f);
+	QString value() const;
 	int labelWidth() const
 	{
 		return labelWidth_;

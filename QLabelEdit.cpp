@@ -59,6 +59,11 @@ void QLabelEdit::setValue(QString f)
 	blockSignals(false);
 }
 
+QString QLabelEdit::value() const
+{
+	return value_;
+}
+
 void QLabelEdit::setTitle(QString f)
 {
 	ui.label->setText(f);
