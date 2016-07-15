@@ -1,5 +1,5 @@
 #include "SliderEditInterface.h"
-#include <QtPlugin>
+//#include <QtPlugin>
 //#include <QDesignerFormEditorInterface>
 //#include <QExtensionManager>
 #include "QSliderEdit.h"
@@ -20,14 +20,6 @@ void QSliderEditInterface::initialize(QDesignerFormEditorInterface *formEditor)
 {
 	if(initialized)
 		return;
-
-////	QExtensionManager *manager = formEditor->extensionManager();
-//	Q_ASSERT(manager != 0);
-
-	//manager->registerExtensions(new QSliderFactory(manager),
-	//							Q_TYPEID(QDesignerPropertySheetExtension));
-
-
 	initialized = true;
 }
 

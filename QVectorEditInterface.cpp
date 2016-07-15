@@ -1,5 +1,5 @@
 #include "QVectorEditInterface.h"
-#include <QtPlugin>
+//#include <QtPlugin>
 //#include <QDesignerFormEditorInterface>
 //#include <QExtensionManager>
 #include "QVectorEdit.h"

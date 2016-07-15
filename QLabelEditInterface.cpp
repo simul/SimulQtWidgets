@@ -1,5 +1,5 @@
 #include "QLabelEditInterface.h"
-#include <QtPlugin>
+//#include <QtPlugin>
 //#include <QDesignerFormEditorInterface>
 //#include <QExtensionManager>
 #include "QLabelEdit.h"
