@@ -56,6 +56,8 @@ public slots:
 	void on_reset_clicked();
 signals:
    void valueChanged();
+	/// Emit startedEdit to e.g. store for undo.
+	void startedEdit();			
 private:
 	Ui::QLabelEdit ui;
 	

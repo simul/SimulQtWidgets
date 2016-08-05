@@ -73,6 +73,8 @@ public:
 	void setUnitsWidth(int w);
 signals:
 	void valueChanged();
+	/// Emit startedEdit to e.g. store for undo.
+	void startedEdit();			
 public slots:
 	void on_reset_clicked();
 	void on_x_editingFinished();

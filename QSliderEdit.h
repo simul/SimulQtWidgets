@@ -109,10 +109,13 @@ public:
 	virtual void incrementDecrement(int step);
 signals:
 	void valueChanged();
+	/// Emit startedEdit to e.g. store for undo.
+	void startedEdit();			
 public slots:
 	void on_increment_clicked();
 	void on_decrement_clicked();
 	void on_reset_clicked();
+	void on_slider_sliderPressed();
 	void on_slider_sliderMoved(int);
 	void on_slider_valueChanged(int);
 	void on_lineEdit_editingFinished();

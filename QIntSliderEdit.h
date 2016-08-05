@@ -84,8 +84,11 @@ public:
 	virtual int textToValue(QString s);
 signals:
 	void valueChanged();
+	/// Emit startedEdit to e.g. store for undo.
+	void startedEdit();			
 public slots:
 	void setOrientation(Qt::Orientation);
+	void on_slider_sliderPressed();
 	void on_reset_clicked();
 	void on_slider_sliderMoved(int);
 	void on_slider_valueChanged(int);
