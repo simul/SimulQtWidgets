@@ -75,9 +75,12 @@ public:
 	{
 		return maximum_;
 	}
-	void setDefaultValue(double f)
+	void setDefaultValue(QVariant f)
 	{
-		defaultValue_ = f;
+		if(f.type()==QVariant::Double)
+			defaultValue_ = f.toDouble();
+		else
+			defaultValue_ = f.toFloat();
 		setShowDefaultButton(true);
 	}
 	double defaultValue() const

@@ -52,9 +52,9 @@ public:
 	{
 		return maximum_;
 	}
-	void setDefaultValue(int f)
+	void setDefaultValue(QVariant f)
 	{
-		defaultValue_ = f;
+		defaultValue_ = f.toInt();
 		setShowDefaultButton(true);
 	}
 	int defaultValue() const
