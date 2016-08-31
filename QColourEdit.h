@@ -41,8 +41,6 @@ public:
 	void setColour(double r,double g,double b,double a=1.0);
 signals:
 	void valueChanged();
-	/// Emit startedEdit to e.g. store for undo.
-	void startedEdit();			
 public slots:
 	void on_red_editingFinished();
 	void on_green_editingFinished();

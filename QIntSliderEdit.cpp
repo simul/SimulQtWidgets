@@ -173,7 +173,6 @@ void QIntSliderEdit::setValue(QVariant f)
 
 void QIntSliderEdit::on_reset_clicked()
 {
-	emit startedEdit();
 	setValue(defaultValue_);
 	emit valueChanged();
 }
@@ -249,11 +248,6 @@ void QIntSliderEdit::on_slider_sliderMoved(int pos)
 	ui.lineEdit->blockSignals(false);
 }
 
-void QIntSliderEdit::on_slider_sliderPressed()
-{
-	emit startedEdit();
-}
-
 void QIntSliderEdit::on_slider_valueChanged(int pos)
 {
 	int val=pos;
@@ -275,7 +269,6 @@ void QIntSliderEdit::on_slider_valueChanged(int pos)
 
 void QIntSliderEdit::on_lineEdit_editingFinished()
 {
-	emit startedEdit();
 	value_=textToValue(ui.lineEdit->text());
 	if(power_of_two_)
 		value_=1<<(log2(value_));

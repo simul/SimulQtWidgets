@@ -40,14 +40,12 @@ bool QLabelEdit::readOnly() const
 
 void QLabelEdit::on_lineEdit_editingFinished()
 {
-	emit startedEdit();
 	value_=ui.lineEdit->text();
 	emit valueChanged();
 }
 
 void QLabelEdit::on_reset_clicked()
 {
-	emit startedEdit();
 	setValue(defaultValue_);
 	emit valueChanged();
 }

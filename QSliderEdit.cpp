@@ -267,7 +267,6 @@ void QSliderEdit::on_decrement_clicked()
 
 void QSliderEdit::on_reset_clicked()
 {
-	emit startedEdit();
 	setValue(defaultValue_);
 	emit valueChanged();
 }
@@ -299,18 +298,12 @@ void QSliderEdit::on_slider_valueChanged(int pos)
 	emit valueChanged();
 }
 
-void QSliderEdit::on_slider_sliderPressed()
-{
-	emit startedEdit();
-}
-
 void QSliderEdit::on_lineEdit_editingFinished()
 {
 	bool ok=false;
 	value_=textToValue(ui.lineEdit->text(),&ok);
 	if(!ok)
 		return;
-	emit startedEdit();
 	ui.slider->blockSignals(true);
 	updateSlider();
 	ui.slider->blockSignals(false);

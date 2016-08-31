@@ -75,7 +75,6 @@ void QColourEdit::on_red_editingFinished()
 	double value_=ui.red->text().toDouble(&ok);
 	if(!ok)
 		return;
-	emit startedEdit();
 	red=value_;
 	emit valueChanged();
 }
@@ -86,7 +85,6 @@ void QColourEdit::on_green_editingFinished()
 	double value_=ui.green->text().toDouble(&ok);
 	if(!ok)
 		return;
-	emit startedEdit();
 	green=value_;
 	emit valueChanged();
 }
@@ -97,7 +95,6 @@ void QColourEdit::on_blue_editingFinished()
 	double value_=ui.blue->text().toDouble(&ok);
 	if(!ok)
 		return;
-	emit startedEdit();
 	blue=value_;
 	emit valueChanged();
 }
@@ -108,7 +105,6 @@ void QColourEdit::on_alpha_editingFinished()
 	double value_=ui.alpha->text().toDouble(&ok);
 	if(!ok)
 		return;
-	emit startedEdit();
 	alpha=value_;
 	emit valueChanged();
 }

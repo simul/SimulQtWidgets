@@ -45,7 +45,6 @@ void QVectorEdit::setTextWidth(int w)
 
 void QVectorEdit::on_reset_clicked()
 {
-	emit startedEdit();
 	setValue(defaultValue_);
 	emit valueChanged();
 }
@@ -56,7 +55,6 @@ void QVectorEdit::on_x_editingFinished()
 	double x=ui.x->text().toDouble(&ok);
 	if(!ok)
 		return;
-	emit startedEdit();
 	value_.setX((float)x);
 	setShowDefaultButton();
 	emit valueChanged();
@@ -68,7 +66,6 @@ void QVectorEdit::on_y_editingFinished()
 	double y=ui.y->text().toDouble(&ok);
 	if(!ok)
 		return;
-	emit startedEdit();
 	value_.setY((float)y);
 	setShowDefaultButton();
 	emit valueChanged();
@@ -80,7 +77,6 @@ void QVectorEdit::on_z_editingFinished()
 	double z=ui.z->text().toDouble(&ok);
 	if(!ok)
 		return;
-	emit startedEdit();
 	value_.setZ((float)z);
 	setShowDefaultButton();
 	emit valueChanged();
