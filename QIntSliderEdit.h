@@ -32,6 +32,7 @@ public:
 	{
 		return labelWidth_;
 	}
+	
 	void setLabelWidth(int w);
 	int textWidth() const
 	{
