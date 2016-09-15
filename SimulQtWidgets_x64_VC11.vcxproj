@@ -459,7 +459,7 @@ copy "$(SIMUL)\exe\$(Platform)\VC11\$(Configuration)\$(TargetFileName)" "$(QTDIR
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties IsDesignerPlugin="True" MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOnBuild="0" Qt5Version_x0020_x64="$(DefaultQtVersion)" MocOptions="" />
+      <UserProperties IsDesignerPlugin="True" MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOnBuild="0" Qt5Version_x0020_x64="msvc2012_x64" MocOptions="" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
