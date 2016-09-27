@@ -42,9 +42,9 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SIMUL)/exe/$(Platform)/VC11/$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SIMUL)/exe/$(Platform)/$(PlatformToolset)/$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\VC11\$(Configuration)\</IntDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SIMUL)/exe/$(Platform)/VC11/$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SIMUL)/exe/$(Platform)/$(PlatformToolset)/$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\VC11\$(Configuration)\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectName)_MD</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName)_MDd</TargetName>
@@ -67,7 +67,7 @@
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>echo "$(SIMUL)\exe\$(Platform)/VC11/$(Configuration)/$(TargetFileName)" "$(QTDIR)\plugins\designer"
+      <Command>echo "$(SIMUL)\exe\$(Platform)/$(PlatformToolset)/$(Configuration)/$(TargetFileName)" "$(QTDIR)\plugins\designer"
 copy "$(SIMUL)\exe\$(Platform)\VC11\$(Configuration)\$(TargetFileName)" "$(QTDIR)\plugins\designer"
 </Command>
     </PostBuildEvent>
@@ -90,8 +90,8 @@ copy "$(SIMUL)\exe\$(Platform)\VC11\$(Configuration)\$(TargetFileName)" "$(QTDIR
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SIMUL)/exe/$(Platform)/VC11/$(Configuration)" "$(QTDIR)\plugins\designer\$(TargetFileName)"
-copy "$(SIMUL)/lib/$(Platform)/VC11/$(Configuration)" "$(QTDIR)\plugins\designer\$(SafeParentName).lib"
+      <Command>copy "$(SIMUL)/exe/$(Platform)/$(PlatformToolset)/$(Configuration)" "$(QTDIR)\plugins\designer\$(TargetFileName)"
+copy "$(SIMUL)/lib/$(Platform)/$(PlatformToolset)/$(Configuration)" "$(QTDIR)\plugins\designer\$(SafeParentName).lib"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
